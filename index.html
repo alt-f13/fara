@@ -1,0 +1,47 @@
+<!doctype html> <html> <head> <meta charset="utf-8"> <title>scheduler</title> <meta name="description" content=""> <meta name="viewport" content="width=device-width,initial-scale=1"> <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel="stylesheet" href="styles/vendor.0630abc1.css"> <link rel="stylesheet" href="styles/main.b13cb6ae.css"> </head> <body ng-app="angularTestApp" ng-controller="MainCtrl" eui-index="'fara'" ng-cloak layout="column"> <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]--> <!-- Add your site or application content here --> <div class="header"> <div class="navbar navbar-default" role="navigation"> <div class="container"> <div class="navbar-header"> <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="#/">ФАРА-ЗАПЧАСТИ</a> </div> <div class="collapse navbar-collapse" id="js-navbar-collapse"> <ul class="nav navbar-nav"> <li class="active"><a href="#/">Главная</a></li> </ul> </div> </div> </div> </div> <div class="container-fluid"> <div ng-view=""></div> </div> <div class="footer"> <div class="container"> <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p> </div> </div> <!-- ##################### Login template --> <script type="text/ng-template" id="login.html"><div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+         <h4>Login form</h4>
+      </div>
+      <div class="modal-body">
+         <form class='form-signin' name='loginForm' ng-submit="submitLogin()">
+            <div class="form-group">
+               <label for="loginformUser">Login</label>
+               <input id="loginformUser" type='text' name='user' ng-model='username' class="form-control" placeholder="Login Name" required>
+            </div>
+            <div class="form-group">
+               <label for="loginformPass">Password</label>
+               <input id="loginformPass" type='password' name='pass' ng-model='password' class="form-control" placeholder="Password" required>
+            </div>
+            <div>
+               <button class="btn" data-dismiss="modal">Close</button>
+               <button class='btn btn-primary' type="submit">Login</button>
+            </div>
+         </form>
+      </div></script> <!-- ################# --> <!-- ##################### Login template --> <script type="text/ng-template" id="register.html"><div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+         <h4>Регистрация</h4>
+      </div>
+      <div class="modal-body">
+         <form class='form-signup' name='loginForm' ng-submit="submitRegistration()">
+            <div class="form-group">
+               <label for="loginformUser">Login</label>
+               <input id="loginformUser" type='text' name='user' ng-model='username' class="form-control" placeholder="Login Name" required>
+            </div>
+            <div class="form-group">
+               <label for="loginformPass">Password</label>
+               <input id="loginformPass" type='password' name='pass' ng-model='password' class="form-control" placeholder="Password" required>
+            </div>
+            <div>
+               <button class="btn" data-dismiss="modal">Close</button>
+               <button class='btn btn-primary' type="submit">Зарегистрироваться</button>
+            </div>
+         </form>
+      </div></script> <!-- ################# --> <!-- Google Analytics: change UA-XXXXX-X to be your site's ID --> <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-89500205-1', 'auto');
+      ga('send', 'pageview');</script> <script src="scripts/vendor.58dcf92f.js"></script> <script src="scripts/scripts.js"></script> </body> </html>
