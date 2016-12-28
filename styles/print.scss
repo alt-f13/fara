@@ -1,0 +1,44 @@
+@page {
+  size: A4 landscape;
+  // margin: 16mm 16mm 16mm 16mm;
+}
+
+@media print {
+  html, body {
+      width: 210mm;
+      height: 297mm;
+  }
+  body {
+    -webkit-print-color-adjust: exact;
+    font-size: 14pt;
+    font-weight: bold;
+    //font-family: monospace;
+  }
+
+  table {
+    min-width: 275mm;
+    min-height: 170mm;
+  }
+  .handsontable {
+    th:last-child {
+      border-bottom: 0px;
+    }
+    th {
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
+  .edited {
+    background-color: rgb(124, 124, 124) !important;
+    -webkit-print-color-adjust: exact;
+
+  }
+  h1, div.header, div.footer, div.pickmeup {
+     display: none !important;
+  }
+  a[href^=http]:after {
+    content:" <" attr(href) ">";
+  }
+  //* { -webkit-print-color-adjust: exact; }
+
+}

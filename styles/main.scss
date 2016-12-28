@@ -1,0 +1,185 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+
+// bower:scss
+@import "bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+// endbower
+@import "pickmeup.scss";
+@import "icons.scss";
+//@import "handsontable.scss";
+@import "print.scss";
+.handsontable {
+  td {
+    border-right: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
+    height: 22px; /*change to the desired height value*/
+    empty-cells: show;
+    line-height: 21px;
+    padding: 0 4px 0 4px;
+    /* top, bottom padding different than 0 is handled poorly by FF with HTML5 doctype */
+    //background-color: #FFF;
+    vertical-align: top;
+    overflow: hidden;
+    outline-width: 0;
+    white-space: pre-line;
+    word-wrap: break-word;
+    vertical-align: middle;
+    text-align: center;
+
+    /* preserve new line character in cell */
+  }
+
+}
+
+
+.modal-lg {
+  width: 80% !important;
+}
+.modal {
+  .modal-body {
+    .edit {
+      max-height: 80vh;
+      overflow-y: hidden;
+
+      .description {
+        max-height: 100px;
+      }
+      .text-editor {
+        height: 100%;
+        width: 100%;
+        min-height: 70vh;
+        min-width: 70vh;
+      }
+      .attachments {
+        max-height: 80vh;
+        overflow: scroll;
+        .thumbnail {
+          max-width: 100px;
+          max-height: 80px;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+
+}
+.ta-scroll-window > .ta-bind {
+    height: auto;
+    min-height: 70vh;
+    padding: 6px 12px;
+}
+
+
+.button {
+    -moz-appearance: button;
+    /* Firefox */
+    -webkit-appearance: button;
+    /* Safari and Chrome */
+    padding: 10px;
+    margin: 10px;
+    width: 70px;
+}
+.drop-box {
+    background: #F8F8F8;
+    border: 5px dashed #DDD;
+    width: 200px;
+    height: 65px;
+    text-align: center;
+    padding-top: 25px;
+    margin: 10px;
+}
+.dragover {
+    border: 5px dashed blue;
+}
+.highlight:not(.pmu-today) {
+    background: #8FC490;
+}
+.highlight:not(.pmu-today):hover {
+    background: #136a9f !important;
+}
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+body {
+  padding: 0;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 10px;
+
+  /* Make the masthead heading the same height as the navigation */
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+    padding-bottom: 19px;
+  }
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+
+  .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+  }
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+
+  p + h4 {
+    margin-top: 28px;
+  }
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
