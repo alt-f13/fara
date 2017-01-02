@@ -1,0 +1,72 @@
+
+
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-xs-3 col-md-3 sidebar">
+            <h3>Поиск</h3>
+            <!-- <eui-searchbox field="'info'"></eui-searchbox> -->
+            <input  type="text" eui-query="ejs.MatchQuery('title', querystring)" ng-model="querystring" eui-enabled="querystring.length" />
+
+           <h3>Производитель:</h3>
+            <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation('field').field('brand').size(65)">
+                <li ng-repeat="bucket in aggResult.buckets">
+                    <label class="checkbox" eui-filter="ejs.TermsFilter('brand', bucket.key)">
+                        <span class="ng-scope">
+                          <a href="" ng-click="filter.enabled=true" class="ng-binding">
+                            <img ng-src="/vendor/logos/{{bucket.key|lowercase|removeSpace}}.gif">
+                        {{bucket.key|uppercase}}
+                         <span class="muted ng-binding"> ({{bucket.doc_count}})</span>
+                         <a href="" ng-click="filter.enabled=false" ng-show="filter.enabled" class="facet-remove">x</a>
+                       </a>
+                     </span>
+                    </label>
+                </li>
+            </ul> <!-- ACTION: change to field to use as facet -->
+
+            <h4>Модель:</h4>
+            <!-- <eui-checklist field="'model'" size="100"></eui-checklist> -->
+            <ul   ng-show="indexVM.filters.jsonObjects.length>0"  ng-show="filter.enabled" class="nav nav-list" eui-aggregation="ejs.TermsAggregation('model').field('model').size(25)">
+                <li ng-repeat="bucket in aggResult.buckets">
+                    <label class="checkbox" eui-filter="ejs.TermsFilter('model', bucket.key)">
+                        <input type="checkbox" ng-model="filter.enabled">
+                        {{bucket.key}} ({{bucket.doc_count}})
+                    </label>
+                </li>
+            </ul>
+            <h5>Кузов</h5>
+            <ul  ng-show="indexVM.filters.jsonObjects.length>1" class="nav nav-list" eui-aggregation="ejs.TermsAggregation('base').field('price').size(25)">
+                <li ng-repeat="bucket in aggResult.buckets">
+                    <label class="checkbox" eui-filter="ejs.TermsFilter('base', bucket.key)">
+                        <input type="checkbox" ng-model="filter.enabled">
+                        {{bucket.key}} ({{bucket.doc_count}})
+                    </label>
+                </li>
+            </ul>
+             <!-- ACTION: change to field to use as facet -->
+            <!-- <h3>Results Per Page</h3>
+            <select ng-model="indexVM.pageSize">
+                <option ng-repeat="item in [10, 20, 50, 100]">{{item}}</option>
+            </select> -->
+        </div>
+        <div class="col-xs-9 main">
+
+
+            <div class="list-group">
+              <a class="list-group-item" ng-href="#/part/{{part._id}}" ng-repeat="part in indexVM.results.hits.hits">
+               <!-- {{part|json}} -->
+               <img ng-src="{{docUrl}}/{{part._id}}/image0.jpg" ng-if="part._source._attachments" alt="">
+                {{part._source.title|join}}
+                <span class="badge">{{part._source.price*1.25}}</span>
+              </a>
+            </div>
+
+            <!-- <div infinite-scroll="nextPage()" infinite-scroll-distance="3"></div> -->
+            <ul class="pager">
+                <li ng-class="{disabled:indexVM.page <= 1}"><a href="" ng-click="indexVM.page=indexVM.page - 1">Previous</a></li>
+                <li ng-class="{disabled:indexVM.pageCount <= indexVM.page}"><a href="" ng-click="indexVM.page=indexVM.page + 1">Next</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

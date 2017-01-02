@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>Расписание <span class="pull-right">{{_doc.date}}</span><h2>
+</div>
+<div class="container-fluid" ng-controller="SchedulerCtrl">
+     <div class="row">
+       <div class="col-md-2">
+         <div pickmeup></div>
+       </div>
+       <div class="col-md-10">
+         <hot-table
+         hot-id="my-handsontable"
+
+           datarows="_doc.grid.data"
+           settings="settings"
+           col-headers="_doc.grid.columns"
+           row-headers="true"
+           mergeCells="_doc.grid.mergeCells"
+         >
+          <hot-column ng-repeat="column in _doc.grid.columns" title="column" renderer="validRenderer" read-only="!authenticated"></hot-column>
+
+         </hot-table>
+       </div>
+     </div>
+
+
+
+</div>

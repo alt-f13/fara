@@ -1,0 +1,6 @@
+<div class="list-group">
+  <a class="list-group-item" ng-href="#/part/{{part.id}}" ng-repeat="part in list">
+    {{part.value.title}} {{part.id}}
+    <span class="badge">{{part.value.price}}</span>
+  </a>
+</div>
