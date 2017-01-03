@@ -18,7 +18,7 @@
                             <img ng-src="/vendor/logos/{{bucket.key|lowercase|removeSpace}}.gif">
                         {{bucket.key|uppercase}}
                          <span class="muted ng-binding"> ({{bucket.doc_count}})</span>
-                         <a href="" ng-click="filter.enabled=false" ng-show="filter.enabled" class="facet-remove">x</a>
+                         <a href="" ng-click="filter.enabled=false" ng-show="filter.enabled" class="facet-remove"><i class="fa fa-times-circle red" aria-hidden="true"></i></a>
                        </a>
                      </span>
                     </label>
@@ -35,7 +35,7 @@
                     </label>
                 </li>
             </ul>
-            <h5>Кузов</h5>
+            <!-- <h5>Кузов</h5>
             <ul  ng-show="indexVM.filters.jsonObjects.length>1" class="nav nav-list" eui-aggregation="ejs.TermsAggregation('base').field('price').size(25)">
                 <li ng-repeat="bucket in aggResult.buckets">
                     <label class="checkbox" eui-filter="ejs.TermsFilter('base', bucket.key)">
@@ -43,7 +43,7 @@
                         {{bucket.key}} ({{bucket.doc_count}})
                     </label>
                 </li>
-            </ul>
+            </ul> -->
              <!-- ACTION: change to field to use as facet -->
             <!-- <h3>Results Per Page</h3>
             <select ng-model="indexVM.pageSize">
@@ -55,10 +55,34 @@
 
             <div class="list-group">
               <a class="list-group-item" ng-href="#/part/{{part._id}}" ng-repeat="part in indexVM.results.hits.hits">
+                <div class="row">
+                  <div class="col-xs-2">
+                    <img ng-src="{{docUrl}}/{{part._id}}/image0.jpg" class=" part-image-small" alt="">
+                  </div>
+                  <div class="col-xs-8">
+                    <h3 class="part-header">{{part._source.title|join}}</h3>
+                    <ul class="list-group">
+                      <li class="list-group-item list-group-item-info">
+                        ДЛЯ:
+                        <span class="label label-info">{{part._source.brand|join}}</span>
+                        <span class="label label-primary">{{part._source.model|join}}</span>
+                      </li>
+                      <li class="list-group-item list-group-item-success" >НАЛИЧИЕ:
+                        <span class="label label-warning">
+                          {{part._source.availability}}
+                        </span>
+                        </li>
+                    </ul>
+                  </div>
+                  <div class="col-xs-1">
+                    <button type="button" class="btn btn-default btn-lg">
+                    Цена:
+                    <span class="badge">{{part._source.price*1.25|currency : "" : 0}} руб.</span>
+                  </button>
+                  </div>
+                </div>
                <!-- {{part|json}} -->
-               <img ng-src="{{docUrl}}/{{part._id}}/image0.jpg" ng-if="part._source._attachments" alt="">
-                {{part._source.title|join}}
-                <span class="badge">{{part._source.price*1.25}}</span>
+
               </a>
             </div>
 

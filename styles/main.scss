@@ -1,7 +1,8 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
-
+$fa-font-path: "/bower_components/font-awesome/fonts/";
 // bower:scss
 @import "bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "font-awesome/scss/font-awesome.scss";
 // endbower
 @import "pickmeup.scss";
 @import "icons.scss";
@@ -29,7 +30,24 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   }
 
 }
+.red {
+  color: red;
+}
 
+.part-image-small {
+  width: 100px;
+  height: 100px;
+  box-sizing: border-box;
+  display: inline-block;
+}
+.part-image {
+  box-sizing: border-box;
+  display: inline-block;
+  max-width: 300px;
+}
+.part-header {
+  display: inline;
+}
 
 .modal-lg {
   width: 80% !important;

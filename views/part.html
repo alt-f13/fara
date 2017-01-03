@@ -1,16 +1,46 @@
-<div class="container">
+<h3 class="part-header">{{part.title|join}}</h3>
+<button type="button" class="btn btn-default btn-lg">
+
+</button>
+<div class="container-fruid">
   <div class="jumbotron">
     <div class="row">
-        {{part.title}}{{part._id}}
-    </div>
-    <div class="row">
-      <div class="col-md-6">{{part.img}}</div>
-      <div class="col-md-6">
-        {{part.info}}<br>
-        {{part.price}}<br>
-        {{part.model}}
-
+      <div class="col-xs-6">
+        <img ng-src="{{docUrl}}/{{part._id}}/image0.jpg" class="part-image" alt="">
       </div>
+      <div class="col-xs-6">
+        <ul class="list-group">
+          <li class="list-group-item active">
+            Цена:
+            <span class="badge">{{part.price*1.25|currency : "" : 0}} руб.</span>
+          </li>
+          <li class="list-group-item list-group-item-success" >НАЛИЧИЕ:
+            <span class="badge">
+              {{part.availability}}
+            </span>
+          </li>
+
+        </ul>
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-info">
+            ДЛЯ:
+            <span class="label label-info">{{part.brand|join}}</span>
+            <span class="label label-primary">{{part.model|join}}</span>
+            <span class="label label-primary">{{part.year|join}}</span>
+          </li>
+          <li class="list-group-item list-group-item-success" >Оригинальный №:
+            <span class="label label-warning">
+              {{part.originalNumber|join}}
+            </span>
+          </li>
+          <li class="list-group-item list-group-item-success" >КроссКод:
+            <span class="label label-warning">
+              {{part.crosCode|join}}
+            </span>
+          </li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </div>
