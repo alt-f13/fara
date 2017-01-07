@@ -21,7 +21,9 @@ var $app = angular
     'ngMaterial',
     'elasticui',
     'elasticsearch',
-    'siyfion.sfTypeahead'
+    'siyfion.sfTypeahead',
+    'hl.sticky',
+    'angular-loading-bar'
   ])
   .config(function ($routeProvider,$httpProvider,couchConfigProvider) {
     $routeProvider

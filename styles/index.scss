@@ -1,28 +1,20 @@
-  .full button span {
-    background-color: limegreen;
-    border-radius: 32px;
-    color: black;
+.brand-grid {
+  text-align: center;
+  .brand-grid-tile {
+    width: 100px;
   }
-  .partially button span {
-    background-color: orange;
-    border-radius: 32px;
-    color: black;
-  }
-  .sidebar {
-              position: fixed;
-              top: 0;
-              bottom: 0;
-              z-index: 1000;
-              display: block;
-              padding: 20px;
-              overflow-x: hidden;
-              overflow-y: auto;
-              background-color: #f5f5f5;
-              border-right: 1px solid #eee;
-          }
+  .brand-grid-tile-footer {
+    height: 20px;
 
-          .instructions {
-              display: block;
-              margin: 0 auto;
-              width: 450px;
-          }
+  }
+}
+md-grid-tile-footer figcaption  {
+  width:100%;
+  h3 {
+    margin-left: 0px !important;
+  }
+}
+md-grid-tile figcaption  {
+  width:100%;
+  text-align: center;
+}
