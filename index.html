@@ -1,37 +1,31 @@
 <!doctype html> <html> <head> <meta charset="utf-8"> <title>scheduler</title> <meta name="description" content=""> <meta name="viewport" content="width=device-width,initial-scale=1"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel="stylesheet" href="styles/vendor.5ebefc9f.css"> <link rel="stylesheet" href="styles/main.504dc3ca.css"> <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> --> </head> <body ng-app="angularTestApp" ng-controller="MainCtrl" eui-index="'fara'" ng-cloak layout="column" eui-sort="ejs.sort(price).order('desc')" eui-enabled="true"> <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]--> <!-- Add your site or application content here --> <md-toolbar class="md-hue-2"> <div class="md-toolbar-tools"> <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true"> <md-icon md-svg-icon="img/icons/menu.svg"></md-icon> </md-button> <h2> <span>ФАРА-ЗАПЧАСТИ</span> </h2> <span flex></span> <md-button class="md-icon-button" aria-label="Favorite"> <md-icon md-svg-icon="img/icons/favorite.svg" style="color: greenyellow"></md-icon> </md-button> <md-button class="md-icon-button" aria-label="More"> <md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon> </md-button> </div> <div> <md-input-container class="md-block"> <label>Поиск</label> <input type="text" eui-query="ejs.MatchQuery('title', querystring)" ng-model="querystring" eui-enabled="querystring.length"> </md-input-container> </div> </md-toolbar> <!-- <div class="header" >
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">ФАРА-ЗАПЧАСТИ</a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-             <li class="active"><a href="#/">Главная</a></li>
-              <li>
-                <a  class="btn btn-success"  href="tel:+78129080412">
-                  <i class="fa fa-2x fa-phone-square fa-lg"></i> +7 812 908-04-12
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
+    <![endif]--> <!-- Add your site or application content here --> <!-- <md-toolbar class="md-hue-2">
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
+          <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+        </md-button>
+        <h2>
+          <span>ФАРА-ЗАПЧАСТИ</span>
+        </h2>
+        <span flex></span>
+        <md-button class="md-icon-button" aria-label="Favorite">
+          <md-icon md-svg-icon="img/icons/favorite.svg" style="color: greenyellow;"></md-icon>
+        </md-button>
+        <md-button class="md-icon-button" aria-label="More">
+          <md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>
+        </md-button>
       </div>
-    </div> --> <div ng-view=""></div> <div class="footer"> <div class="container"> <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p> </div> </div> <!-- Google Analytics: change UA-XXXXX-X to be your site's ID --> <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      <div>
+        <md-input-container class="md-block">
+          <label>Поиск</label>
+          <input  type="text" eui-query="ejs.MatchQuery('title', querystring)" ng-model="querystring" eui-enabled="querystring.length" />
+         </md-input-container>
+      </div>
+    </md-toolbar> --> <div class="header"> <div class="navbar navbar-default" role="navigation"> <div class="container"> <div class="navbar-header"> <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="#/">ФАРА-ЗАПЧАСТИ</a> </div> <div class="collapse navbar-collapse" id="js-navbar-collapse"> <ul class="nav navbar-nav"> <li class="active"><a href="#/">Главная</a></li> <li> <a class="btn btn-success" href="tel:+78129080412"> <i class="fa fa-2x fa-phone-square fa-lg"></i> +7 812 908-04-12 </a> </li> </ul> </div> </div> </div> </div> <div ng-view=""></div> <div class="footer"> <div class="container"> <p><span class="glyphicon glyphicon-heart"></span>by DEN4EG</p> </div> </div> <!-- Google Analytics: change UA-XXXXX-X to be your site's ID --> <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
       ga('create', 'UA-89500205-1', 'auto');
-      ga('send', 'pageview');</script> <script src="scripts/vendor.a837dc33.js"></script> <script src="scripts/scripts.0aebc7c8.js"></script> </body> </html>
+      ga('send', 'pageview');</script> <script src="scripts/vendor.a837dc33.js"></script> <script src="scripts/scripts.354294dc.js"></script> </body> </html>

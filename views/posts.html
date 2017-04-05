@@ -56,9 +56,8 @@
 
 <div>
 
-    <div>
-        <div>
-
+    <div class="row">
+        <div class="col-md-4">
             <h4 ng-show="indexVM.filters.jsonObjects.length>0">Модель:</h4>
             <!-- <eui-checklist field="'model'" size="100"></eui-checklist> -->
             <md-list flex ng-show="indexVM.filters.jsonObjects.length>0" eui-aggregation="ejs.TermsAggregation('model').field('model').size(25)">
@@ -86,7 +85,7 @@
                 <option ng-repeat="item in [10, 20, 50, 100]">{{item}}</option>
             </select> -->
         </div>
-        <div>
+        <div class="col-md-8">
 
         <md-list flex>
           <md-list-item  class="secondary-button-padding md-3-line"  ng-href="#/part/{{part._id}}"  ng-repeat="part in indexVM.results.hits.hits">
