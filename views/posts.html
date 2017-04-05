@@ -1,75 +1,35 @@
-<div  eui-aggregation="ejs.TermsAggregation('field').field('brand').size(65)">
-  <md-grid-list
-        md-cols="4" md-cols-sm="6" md-cols-md="10" md-cols-gt-md="16"
-        md-row-height-gt-md="90px" md-row-height="70px"
-        md-cell-width="100px"
-        md-gutter="4px" md-gutter-gt-sm="4px" layout-align="center center"
-        class="brand-grid" flex>
 
-    <md-grid-tile ng-repeat="bucket in aggResult.buckets" class="brand-grid-tile"                  ng-show="!filter.enabled"
-    ng-show="!filter.enabled"
->
-      <a href="#" eui-filter="ejs.TermsFilter('brand', bucket.key)"
-                 ng-click="filter.enabled=true"
-        >
-        <img ng-src="/vendor/logos/{{bucket.key|lowercase|removeSpace}}.gif">
-
-        <md-grid-tile-footer class="brand-grid-tile-footer"><h3>{{bucket.key|uppercase}}</h3></md-grid-tile-footer>
-       </a>
-
-    </md-grid-tile>
-  </md-grid-list>
-</div>
-<div>
-
-  <!-- <section layout="row" layout-sm="column" layout-align="center center" layout-wrap  eui-aggregation="ejs.TermsAggregation('field').field('brand').size(65)">
-        <div ng-repeat="bucket in aggResult.buckets" class="ng-binding">
-          <md-button class="md-raised"
-                      eui-filter="ejs.TermsFilter('brand', bucket.key)"
-                       ng-click="filter.enabled=true"
-                       ng-show="!filter.enabled">
-                       <img ng-src="/vendor/logos/{{bucket.key|lowercase|removeSpace}}.gif">
-                      <br>
-                      {{bucket.key|uppercase}}
-
-                      <span class="muted ng-binding md-caption"> ({{bucket.doc_count}})</span>
-
-          </md-button>
-          <md-button class="md-raised"
-                      eui-filter="ejs.TermsFilter('brand', bucket.key)"
-                       ng-click="filter.enabled=false"
-                       ng-show="filter.enabled">
-                       <img ng-src="/vendor/logos/{{bucket.key|lowercase|removeSpace}}.gif">
-                      <br>
-                      {{bucket.key|uppercase}}
-                      <span class="muted ng-binding md-caption"> ({{bucket.doc_count}})</span>
-
-                      <i class="fa fa-times-circle red" aria-hidden="true"></i>
-          </md-button>
-
-        </div>
-
-
-
-  </section> -->
-</div>
-
-<div>
-
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-4">
-            <h4 ng-show="indexVM.filters.jsonObjects.length>0">Модель:</h4>
-            <!-- <eui-checklist field="'model'" size="100"></eui-checklist> -->
-            <md-list flex ng-show="indexVM.filters.jsonObjects.length>0" eui-aggregation="ejs.TermsAggregation('model').field('model').size(25)">
-                <md-list-item ng-repeat="bucket in aggResult.buckets">
-                    <label class="checkbox" eui-filter="ejs.TermsFilter('model', bucket.key)">
-                        <md-checkbox ng-model="filter.enabled">
-                        {{bucket.key}} ({{bucket.doc_count}})
-                        </md-checkbox>
-
+        <div class="col-xs-3 col-md-3 sidebar">
+            <h3>Поиск</h3>
+            <!-- <eui-searchbox field="'info'"></eui-searchbox> -->
+            <input  type="text" eui-query="ejs.MatchQuery('title', querystring)" ng-model="querystring" eui-enabled="querystring.length" />
+           <h3>Производитель:</h3>
+            <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation('field').field('brand').size(65)">
+                <li ng-repeat="bucket in aggResult.buckets">
+                    <label class="checkbox" eui-filter="ejs.TermsFilter('brand', bucket.key)">
+                        <span class="ng-scope">
+                          <a href="" ng-click="filter.enabled=true" class="ng-binding">
+                            <img ng-src="/vendor/logos/{{bucket.key|lowercase|removeSpace}}.gif">
+                        {{bucket.key|uppercase}}
+                         <span class="muted ng-binding"> ({{bucket.doc_count}})</span>
+                         <a href="" ng-click="filter.enabled=false" ng-show="filter.enabled" class="facet-remove"><i class="fa fa-times-circle red" aria-hidden="true"></i></a>
+                       </a>
+                     </span>
                     </label>
-                </md-list-item>
-            </md-list>
+                </li>
+            </ul> <!-- ACTION: change to field to use as facet -->
+            <h4>Модель:</h4>
+            <!-- <eui-checklist field="'model'" size="100"></eui-checklist> -->
+            <ul   ng-show="indexVM.filters.jsonObjects.length>0"  ng-show="filter.enabled" class="nav nav-list" eui-aggregation="ejs.TermsAggregation('model').field('model').size(25)">
+                <li ng-repeat="bucket in aggResult.buckets">
+                    <label class="checkbox" eui-filter="ejs.TermsFilter('model', bucket.key)">
+                        <input type="checkbox" ng-model="filter.enabled">
+                        {{bucket.key}} ({{bucket.doc_count}})
+                    </label>
+                </li>
+            </ul>
             <!-- <h5>Кузов</h5>
             <ul  ng-show="indexVM.filters.jsonObjects.length>1" class="nav nav-list" eui-aggregation="ejs.TermsAggregation('base').field('price').size(25)">
                 <li ng-repeat="bucket in aggResult.buckets">
@@ -85,36 +45,39 @@
                 <option ng-repeat="item in [10, 20, 50, 100]">{{item}}</option>
             </select> -->
         </div>
-        <div class="col-md-8">
-
-        <md-list flex>
-          <md-list-item  class="secondary-button-padding md-3-line"  ng-href="#/part/{{part._id}}"  ng-repeat="part in indexVM.results.hits.hits">
-            <img ng-src="{{docUrl}}/{{part._id}}/image0.jpg" class="md-avatar part-image-small" alt="">
-            <div class="md-list-item-text" layout="column">
-              <h3 class="part-header list-group-item-heading">{{part._source.title|join}}</h3>
-              <p>
-                  ДЛЯ:
-                  {{part._source.brand|join}} {{part._source.model|join}}
-                  <!-- <md-chips>
-                    <md-chip>{{part._source.brand|join}}</md-chip>
-                    <md-chip ng-repeat="modelll in part._source">{{modelll}}</md-chip>
-                  </md-chips> -->
-              </p>
-              <p>
-                наличие: {{part._source.availability}}
-                оригинальный №: {{part._source.originalNumber|join}}
-              </p>
+        <div class="col-xs-9 main">
+            <div class="list-group">
+              <a class="list-group-item" ng-href="#/part/{{part._id}}" ng-repeat="part in indexVM.results.hits.hits">
+                <div class="row">
+                  <div class="col-xs-2">
+                    <img ng-src="{{docUrl}}/{{part._id}}/image0.jpg" class=" part-image-small" alt="">
+                  </div>
+                  <div class="col-xs-8">
+                    <h3 class="part-header">{{part._source.title|join}}</h3>
+                    <ul class="list-group">
+                      <li class="list-group-item list-group-item-info">
+                        ДЛЯ:
+                        <span class="label label-info">{{part._source.brand|join}}</span>
+                        <span class="label label-primary">{{part._source.model|join}}</span>
+                      </li>
+                      <li class="list-group-item list-group-item-success" >НАЛИЧИЕ:
+                        <span class="label label-warning">
+                          {{part._source.availability}}
+                        </span>
+                        </li>
+                    </ul>
+                  </div>
+                  <div class="col-xs-1">
+                    <button type="button" class="btn btn-default btn-lg">
+                    Цена:
+                    <span class="badge">{{part._source.price*1.25|currency : "" : 0}} руб.</span>
+                  </button>
+                  </div>
+                </div>
+               <!-- {{part|json}} -->
+              </a>
             </div>
-            <md-button class="md-secondary md-raised">
-              Цена:
-              {{part._source.price*1.25|currency : "" : 0}} руб.
-            </md-button>
-
-            <md-divider inset></md-divider>
-
-          </md-list-item>
-        </md-list>
-
+            <!-- <div infinite-scroll="nextPage()" infinite-scroll-distance="3"></div> -->
             <ul class="pager">
                 <li ng-class="{disabled:indexVM.page <= 1}"><a href="" ng-click="indexVM.page=indexVM.page - 1">Previous</a></li>
                 <li ng-class="{disabled:indexVM.pageCount <= indexVM.page}"><a href="" ng-click="indexVM.page=indexVM.page + 1">Next</a></li>
